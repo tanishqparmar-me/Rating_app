@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+
+{% block title %}View Rating | home{% endblock title %}
+    
+
+{% block body %}
+<center><h3>User Name - {{name}}</h3></center>
+<section class="first">
+    <div class="div">
+        <h1>Average Rating - </h1>
+        <h1>{{rating}}</h1>
+        <div class="bar">
+            <div class="star-rating" id="star-rating" data-rating="{{rating}}">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+            </div>         
+        </div>
+    </div>
+</section>
+
+<section class="second">
+        <h1><center>Reviews-</center></h1>
+    {% for i in key %}
+    <div class="card">
+        <h3>Name - {{i.name}}</h3>
+        <h3>Rating - {{i.rate}}</h3>
+        <h3>Message -</h3>
+        <p>{{i.message}}</p>
+    </div>
+    {% endfor %}
+        
+     
+    </section>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const starRating = document.getElementById('star-rating');
+    const ratingValue = parseFloat(starRating.getAttribute('data-rating')); // Get the rating value from data attribute
+
+    // Fill the stars based on the rating value
+    const stars = starRating.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        if (index < Math.floor(ratingValue)) {
+            star.classList.add('filled'); // Add filled class to stars up to the whole number part
+        } else if (index === Math.floor(ratingValue) && ratingValue % 1 !== 0) {
+            star.classList.add('half'); // Add half class if it's a half star
+        }
+    });
+});
+</script>
+    
+{% endblock body %}
+    

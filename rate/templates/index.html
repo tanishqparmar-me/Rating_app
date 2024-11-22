@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Rating App |{% endblock title %}
+        </title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+.star-rating {
+    display: inline-block;
+}
+
+.star {
+    font-size: 30px; /* Size of the stars */
+    color: lightgray; /* Default color */
+    position: relative;
+}
+
+.star.filled {
+    color: gold; /* Color for filled stars */
+}
+
+.star.half:before {
+    content: '\2605'; /* Full star */
+    position: absolute;
+    left: 0;
+    width: 50%; /* Half star */
+    overflow: hidden;
+    color: gold; /* Color for half star */
+}
+            </style>
+</head>
+<body>
+    <nav>
+        <div><h1>Rating App</h1></div>
+        <div><a href="/">Home</a></div>
+        <div><a href="/rate/">Rate</a></div>
+        <div><a href="/login/">Logout</a></div>
+    </nav>
+  
+  {% block body %}
+    
+  {% endblock body %}
+    
+</body>
+</html>
